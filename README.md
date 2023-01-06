@@ -1,0 +1,1 @@
+Creating my own operating system and learning the basic concepts of OS development.
