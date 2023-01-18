@@ -19,3 +19,24 @@ mykernel.bin: linker.ld $(objects)
 
 install: mykernel.bin 
 		sudo cp $< /boot/mykernel.bin
+
+#to run in virtual box
+mykernel.iso: mykernel.bin
+		mkdir iso
+		mkdir iso/boot
+		mkdir iso/boot/grub
+		cp $< mykernel.bin iso/boot/
+		echo 'set timeout=0' >> iso/boot/grub/grub.cfg
+		echo 'set default=0' >> iso/boot/grub/grub.cfg
+		echo '' >> iso/boot/grub/grub.cfg
+		echo 'menuentry "My Operating System" {' >> iso/boot/grub/grub.cfg
+		echo '	multiboot /boot/mykernel.bin' >> iso/boot/grub/grub.cfg
+		echo '	boot' >> iso/boot/grub/grub.cfg
+		echo '}' >> iso/boot/grub/grub.cfg
+		grub-mkrescue --output=$@ iso 
+		rm -rf iso
+#kills vm process if exists instead of throwing error		
+run: mykernel.iso
+		(killall VirtualBox && sleep 1) || true  
+		VBoxManage startvm "MAXIMUS" &
+
