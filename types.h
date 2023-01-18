@@ -1,7 +1,8 @@
 #ifndef __TYPES_H
 #define __TYPES_H
 
-    
+    //byte-perfect implementation of different datatype sizes to interact correct with the hardware/assembler
+    //example -> if compiler has different size of compiled ints as maybe assembler 
     typedef char int8_t;
     typedef unsigned char uint8_t;
 
