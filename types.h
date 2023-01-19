@@ -1,4 +1,7 @@
+//ifndef -> "if something is not defined"
+//closed with #endif tag
 #ifndef __TYPES_H
+
 #define __TYPES_H
 
     //byte-perfect implementation of different datatype sizes to interact correct with the hardware/assembler
@@ -17,3 +20,4 @@
 
 
 #endif
+//closes ifndef tag 

@@ -4,7 +4,7 @@ void printf(char * str){
 
     //unsigned short = 2 Byte
     static uint16_t* VideoMemory = (uint16_t*)0xb8000;
-    
+        
     for(int i = 0; str[i] != '\0'; i++){
         //avoid to overwrite the high byte
         //copy the high byte 
